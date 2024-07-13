@@ -41,5 +41,6 @@ public class ArrayStack {
     public void delete() {
         this.array = null;
         this.top = -1;
+        System.out.println("Stack deleted.");
     }
 }
