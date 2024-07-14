@@ -2,6 +2,7 @@ package com.keyin.hynes.braden.qap5dsa.classes;
 public class ArrayStack {
     private char[] array;
     private int top;
+    private char popped;
     public ArrayStack(int size) {
         this.array = new char[size];
         this.top = -1;
@@ -32,8 +33,14 @@ public class ArrayStack {
             System.out.println("Character successfully added.");
         }
     }
-    public void pop() {
-        if (!isEmpty()) top--;
+    public char pop() {
+        if (!isEmpty()) {
+            this.popped = array[top];
+            top--;
+            return popped;
+        } else {
+            return '\0';
+        }
     }
     public char peek() {
         return array[top];
