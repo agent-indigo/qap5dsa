@@ -1,12 +1,14 @@
 package com.keyin.hynes.braden.qap5dsa.classes;
-public class ArrayStack {
-    private char[] array;
+import com.keyin.hynes.braden.qap5dsa.interfaces.Stacking;
+public final class ArrayStack<T> implements Stacking<T> {
+    private Object[] array;
     private int top;
-    private char popped;
+    private T popped;
     public ArrayStack(int size) {
-        this.array = new char[size];
+        this.array = new Object[size];
         this.top = -1;
     }
+    @Override
     public int getSize() {
         return array.length;
     }
@@ -26,25 +28,30 @@ public class ArrayStack {
             return false;
         }
     }
-    public void push(char character) {
+    @Override
+    public void push(T character) {
         if (!isFull()) {
             array[top + 1] = character;
             top++;
-            System.out.println("Character successfully added.");
         }
     }
-    public char pop() {
+    @Override
+    @SuppressWarnings("unchecked")
+    public T pop() {
         if (!isEmpty()) {
-            this.popped = array[top];
+            this.popped = (T) array[top];
             top--;
             return popped;
         } else {
-            return '\0';
+            return null;
         }
     }
-    public char peek() {
-        return array[top];
+    @Override
+    @SuppressWarnings("unchecked")
+    public T peek() {
+        return (T) array[top];
     }
+    @Override
     public void delete() {
         this.array = null;
         this.top = -1;

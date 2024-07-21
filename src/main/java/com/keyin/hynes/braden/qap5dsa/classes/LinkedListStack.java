@@ -1,22 +1,28 @@
 package com.keyin.hynes.braden.qap5dsa.classes;
+import com.keyin.hynes.braden.qap5dsa.interfaces.Stacking;
 import java.util.LinkedList;
-public class LinkedListStack {
-    private LinkedList<Character> list;
+public final class LinkedListStack<T> implements Stacking<T> {
+    private LinkedList<T> list;
     public LinkedListStack() {
-        this.list = new LinkedList<Character>();
+        this.list = new LinkedList<T>();
     }
+    @Override
     public int getSize() {
         return list.size();
     }
-    public void push(char character) {
-        list.addLast(character);
+    @Override
+    public void push(T value) {
+        list.addLast(value);
     }
-    public void pop() {
-        list.removeLast();
+    @Override
+    public T pop() {
+        return list.pop();
     }
-    public char peek() {
+    @Override
+    public T peek() {
         return list.getLast();
     }
+    @Override
     public void delete() {
         this.list = null;
     }

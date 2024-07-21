@@ -2,7 +2,7 @@ package com.keyin.hynes.braden.qap5dsa.classes;
 import java.util.Scanner;
 public final class App {
     private Scanner scanner;
-    private ArrayStack stack;
+    private ArrayStack<Character> stack;
     private String word;
     private int length;
     private int middle;
@@ -28,7 +28,7 @@ public final class App {
             this.length = word.length();
             this.middle = length / 2;
             this.i = length % 2 == 0 ? middle : middle + 1;
-            this.stack = new ArrayStack(length);
+            this.stack = new ArrayStack<Character>(length);
             for (int i = 0; i < middle; i++) stack.push(word.charAt(i));
             while (i < length) {
                 if (word.charAt(i) != stack.pop()) {
